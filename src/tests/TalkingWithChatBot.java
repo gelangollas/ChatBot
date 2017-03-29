@@ -6,6 +6,7 @@ import java.math.BigInteger;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class TalkingWithChatBot {
@@ -56,7 +57,7 @@ public class TalkingWithChatBot {
         String responce = bot.GetResponce();
         assertEquals("Are you stupid? " +
                 "I told you what i can only fold two positive integers. " +
-                "So, behave yourself and ask me to fold two integers)", responce);
+                "So, behave yourself and ask me to fold two integers)))", responce);
     }
 
 }
