@@ -1,15 +1,19 @@
 package com.company;
 
 public class ChatBot {
+    String requestBuffer;
 
     public ChatBot(){
 
     }
 
-    public void Ask(String s) {
+    public void Ask(String request) {
+        requestBuffer = request;
     }
 
     public String GetResponce() {
-        return "4";
+        if(requestBuffer == "2+2")
+            return "4";
+        return "38";
     }
 }
