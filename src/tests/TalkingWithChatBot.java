@@ -49,4 +49,14 @@ public class TalkingWithChatBot {
         assertEquals(expected.toString(), responce);
     }
 
+    @Test
+    public void AskWrongRequest(){
+        ChatBot bot = new ChatBot();
+        bot.Ask("Can you do something else than only folding number???");
+        String responce = bot.GetResponce();
+        assertEquals("Are you stupid? " +
+                "I told you what i can only fold two positive integers. " +
+                "So, behave yourself and ask me to fold two integers)", responce);
+    }
+
 }
