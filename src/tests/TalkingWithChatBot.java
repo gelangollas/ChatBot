@@ -15,4 +15,12 @@ public class TalkingWithChatBot {
         assertEquals("4", responce);
     }
 
+    @Test
+    public void Ask_18_plus_20(){
+        ChatBot bot = new ChatBot();
+        bot.Ask("18+20");
+        String responce = bot.GetResponce();
+        assertEquals("38", responce);
+    }
+
 }
