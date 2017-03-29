@@ -2,6 +2,9 @@ package tests;
 import com.company.ChatBot;
 import org.junit.Test;
 
+import java.math.BigInteger;
+import java.util.Random;
+
 import static org.junit.Assert.assertEquals;
 
 
@@ -28,6 +31,22 @@ public class TalkingWithChatBot {
         ChatBot bot = new ChatBot();
         String responce = bot.GetResponce();
         assertEquals("Hello! I am stupid chat bot who can only fold two positive integers. Stupid, right?", responce);
+    }
+
+    @Test
+    public void Ask_x_plus_y(){
+        Random rand = new Random();
+        Integer x = rand.nextInt(), y = rand.nextInt();
+        if(x < 0) x = -x;
+        if(y < 0) y = -y;
+
+        ChatBot bot = new ChatBot();
+        bot.Ask(x.toString()+"+"+y.toString());
+        String responce = bot.GetResponce();
+        BigInteger expected = new BigInteger(x.toString());
+        expected = expected.add(new BigInteger(y.toString()));
+
+        assertEquals(expected.toString(), responce);
     }
 
 }
