@@ -1,5 +1,7 @@
 package com.company;
 
+import java.math.BigInteger;
+
 public class ChatBot {
     static final String INITIAL_RESPONCE = "Hello! " +
             "I am stupid chat bot who can only fold two positive integers. " +
@@ -23,8 +25,14 @@ public class ChatBot {
             return INITIAL_RESPONCE;
         }
 
-        if(requestBuffer == "2+2")
-            return "4";
-        return "38";
+        return CalculateExpression(requestBuffer).toString();
+    }
+
+    private BigInteger CalculateExpression(String expr) {
+        String []nums = expr.split("\\+");
+        BigInteger x = new BigInteger(nums[0]);
+        BigInteger y = new BigInteger(nums[1]);
+
+        return x.add(y);
     }
 }
