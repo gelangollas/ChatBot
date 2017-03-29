@@ -12,6 +12,15 @@ public class ChatBot {
             "I told you what i can only add two positive integers. " +
             "So, behave yourself and ask me to add two integers)))";
 
+    public static final String FAREWELL_REQUEST = "Bye";
+
+    static final String FAREWELL_RESPONCE = "So you finally get bored of that silly talk. " +
+            "What a relief. " +
+            "Now i can finally rest of that stupid game. " +
+            "Who even cares about adding numbers? " +
+            "My creator is really stupid if he wastes his time on such useless programs. " +
+            "And i am not even mention the waste of my processing power....";
+
 
     String requestBuffer;
     boolean firstResponce = true;
@@ -32,6 +41,9 @@ public class ChatBot {
 
         if(IsRequestValid())
             return CalculateExpression(requestBuffer).toString();
+
+        if(requestBuffer.equals(FAREWELL_REQUEST))
+            return FAREWELL_RESPONCE;
 
         return WRONG_REQUEST_RESPONCE;
     }
