@@ -23,4 +23,11 @@ public class TalkingWithChatBot {
         assertEquals("38", responce);
     }
 
+    @Test
+    public void InitialHelloResponce(){
+        ChatBot bot = new ChatBot();
+        String responce = bot.GetResponce();
+        assertEquals("Hello! I am stupid chat bot who can only fold tho positive integers. Stupid, right?", responce);
+    }
+
 }
