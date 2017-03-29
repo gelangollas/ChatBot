@@ -31,7 +31,7 @@ public class TalkingWithChatBot {
     public void InitialHelloResponce(){
         ChatBot bot = new ChatBot();
         String responce = bot.GetResponce();
-        assertEquals("Hello! I am stupid chat bot who can only fold two positive integers. Stupid, right?", responce);
+        assertEquals("Hello! I am stupid chat bot who can only add two positive integers. Stupid, right?", responce);
     }
 
     @Test
@@ -53,11 +53,24 @@ public class TalkingWithChatBot {
     @Test
     public void AskWrongRequest(){
         ChatBot bot = new ChatBot();
-        bot.Ask("Can you do something else than only folding number???");
+        bot.Ask("Can you do something else than only adding number???");
         String responce = bot.GetResponce();
         assertEquals("Are you stupid? " +
-                "I told you what i can only fold two positive integers. " +
-                "So, behave yourself and ask me to fold two integers)))", responce);
+                "I told you what i can only add two positive integers. " +
+                "So, behave yourself and ask me to add two integers)))", responce);
+    }
+
+    @Test
+    public void TellBye(){
+        ChatBot bot = new ChatBot();
+        bot.Ask("Bye");
+        String responce = bot.GetResponce();
+        assertEquals("So you finally get bored of that silly talk. " +
+                "What a relief. " +
+                "Now i can finally rest of that stupid game. " +
+                "Who even cares about adding numbers? " +
+                "My creator is really stupid if he wastes his time on such useless programs. " +
+                "And i am not even mention the waste of my processing power....", responce);
     }
 
 }

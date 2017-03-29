@@ -5,12 +5,13 @@ import java.util.regex.Pattern;
 
 public class ChatBot {
     static final String INITIAL_RESPONCE = "Hello! " +
-            "I am stupid chat bot who can only fold two positive integers. " +
+            "I am stupid chat bot who can only add two positive integers. " +
             "Stupid, right?";
 
     static final String WRONG_REQUEST_RESPONCE = "Are you stupid? " +
-            "I told you what i can only fold two positive integers. " +
-            "So, behave yourself and ask me to fold two integers)))";
+            "I told you what i can only add two positive integers. " +
+            "So, behave yourself and ask me to add two integers)))";
+
 
     String requestBuffer;
     boolean firstResponce = true;
