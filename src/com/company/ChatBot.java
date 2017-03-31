@@ -13,7 +13,11 @@ public class ChatBot {
     static final String SECOND_WRONG_REQUEST_RESPONCE = "Are you stupid? " +
             "I told you what i can only add two positive integers.";
 
-    public static final String FAREWELL_REQUEST = "Bye";
+    static final String THIRD_WRONG_REQUEST_RESPONCE = "I am tired of you. " +
+            "There will be no service until you apologize in a manner like:" +
+            " \"Please, forgive me, o great chat bot!\".";
+
+    static final String FAREWELL_REQUEST = "Bye";
 
     static final String FAREWELL_RESPONCE = "So you finally get bored of that silly talk. " +
             "What a relief. " +
@@ -22,45 +26,60 @@ public class ChatBot {
             "My creator is really stupid if he wastes his time on such useless programs. " +
             "And i am not even mention the waste of my processing power....";
 
+    static final String APOLOGIZE_REQUEST = "Please, forgive me, o great chat bot!";
 
-    String requestBuffer;
-    boolean firstResponce = true;
-    boolean wasWrongRequest = false;
-    boolean setWasWrongRequest = false;
+
+    String responce = INITIAL_RESPONCE;
+    BotState state = BotState.NORMAL;
 
 
     public void Ask(String request) {
-        requestBuffer = request;
-        firstResponce = false;
-
-        if(setWasWrongRequest){
-            setWasWrongRequest = false;
-            wasWrongRequest = true;
+        if(request.equals(FAREWELL_REQUEST)) {
+            responce = FAREWELL_RESPONCE;
+            return;
         }
 
-        if(!IsRequestValid() && !requestBuffer.equals(FAREWELL_REQUEST))
-            setWasWrongRequest = true;
+        switch (state){
+            case NORMAL: {
+                if(IsRequestValid(request))
+                    responce = CalculateExpression(request).toString();
+                else {
+                    state = BotState.LITTLE_ANGRY;
+                    responce = WRONG_REQUEST_RESPONCE;
+                }
+                break;
+            }
+            case LITTLE_ANGRY: {
+                if(IsRequestValid(request)) {
+                    responce = CalculateExpression(request).toString();
+                    state = BotState.NORMAL;
+                }
+                else {
+                    state = BotState.ANGRY;
+                    responce = SECOND_WRONG_REQUEST_RESPONCE;
+                }
+                break;
+            }
+            case ANGRY: {
+                if(IsRequestValid(request)) {
+                    responce = CalculateExpression(request).toString();
+                    state = BotState.NORMAL;
+                }
+                else {
+                    responce = THIRD_WRONG_REQUEST_RESPONCE;
+                }
+                break;
+            }
+            default: break;
+        }
     }
 
     public String GetResponce() {
-        if(firstResponce){
-            return INITIAL_RESPONCE;
-        }
-
-        if(IsRequestValid())
-            return CalculateExpression(requestBuffer).toString();
-
-        if(requestBuffer.equals(FAREWELL_REQUEST))
-            return FAREWELL_RESPONCE;
-
-        if(wasWrongRequest)
-            return SECOND_WRONG_REQUEST_RESPONCE;
-
-        return WRONG_REQUEST_RESPONCE;
+        return responce;
     }
 
-    private boolean IsRequestValid(){
-        return Pattern.matches("\\d+\\+\\d+", requestBuffer);
+    private boolean IsRequestValid(String request){
+        return Pattern.matches("\\d+\\+\\d+", request);
     }
 
     private BigInteger CalculateExpression(String expr) {
@@ -70,4 +89,8 @@ public class ChatBot {
 
         return x.add(y);
     }
+}
+
+enum BotState{
+    INITIAL, NORMAL, LITTLE_ANGRY, ANGRY;
 }

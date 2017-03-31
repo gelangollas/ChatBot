@@ -89,7 +89,7 @@ public class TalkingWithChatBot {
         bot.Ask("Third wrond request.");
         String responce = bot.GetResponce();
         assertEquals("I am tired of you. There will be no service until you apologize in a manner like:" +
-                " \"Please, forgove me, o great chat bot!\".", responce);
+                " \"Please, forgive me, o great chat bot!\".", responce);
     }
 
 }
