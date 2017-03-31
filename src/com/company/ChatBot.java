@@ -8,9 +8,10 @@ public class ChatBot {
             "I am stupid chat bot who can only add two positive integers. " +
             "Stupid, right?";
 
-    static final String WRONG_REQUEST_RESPONCE = "Are you stupid? " +
-            "I told you what i can only add two positive integers. " +
-            "So, behave yourself and ask me to add two integers)))";
+    static final String WRONG_REQUEST_RESPONCE = "Please, behave yourself and ask me to add two integers)))";
+
+    static final String SECOND_WRONG_REQUEST_RESPONCE = "Are you stupid? " +
+            "I told you what i can only add two positive integers.";
 
     public static final String FAREWELL_REQUEST = "Bye";
 

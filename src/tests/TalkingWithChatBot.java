@@ -55,9 +55,7 @@ public class TalkingWithChatBot {
         ChatBot bot = new ChatBot();
         bot.Ask("Can you do something else than only adding number???");
         String responce = bot.GetResponce();
-        assertEquals("Are you stupid? " +
-                "I told you what i can only add two positive integers. " +
-                "So, behave yourself and ask me to add two integers)))", responce);
+        assertEquals("Please, behave yourself and ask me to add two integers)))", responce);
     }
 
     @Test
@@ -71,6 +69,18 @@ public class TalkingWithChatBot {
                 "Who even cares about adding numbers? " +
                 "My creator is really stupid if he wastes his time on such useless programs. " +
                 "And i am not even mention the waste of my processing power....", responce);
+    }
+
+
+    @Test
+    public void AskTwoWrongRequests(){
+        ChatBot bot = new ChatBot();
+        bot.Ask("Some wrong request.");
+        bot.GetResponce();
+
+        bot.Ask("Second wrong request.");
+        String responce = bot.GetResponce();
+        assertEquals("I told you what i can only add two positive integers.", responce);
     }
 
 }
