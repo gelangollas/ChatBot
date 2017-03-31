@@ -6,7 +6,6 @@ import java.math.BigInteger;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 
 public class TalkingWithChatBot {
@@ -76,8 +75,6 @@ public class TalkingWithChatBot {
     public void AskTwoWrongRequests(){
         ChatBot bot = new ChatBot();
         bot.Ask("Some wrong request.");
-        bot.GetResponce();
-
         bot.Ask("Second wrong request.");
         String responce = bot.GetResponce();
         assertEquals("Are you stupid? " +
