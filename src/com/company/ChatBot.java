@@ -30,6 +30,9 @@ public class ChatBot {
 
     static final String OFFENDED_RESPONCE = "...";
 
+    static final String FOGIVE_RESPONCE = "okaaay... i'll forgive you that time " +
+            "but try not to cause troubles anymore.";
+
     String responce = INITIAL_RESPONCE;
     BotState state = BotState.NORMAL;
 
@@ -75,6 +78,7 @@ public class ChatBot {
             case OFFENDED: {
                 if(request.equals(APOLOGIZE_REQUEST)){
                     state = BotState.NORMAL;
+                    responce = FOGIVE_RESPONCE;
                 }
                 else {
                     responce = OFFENDED_RESPONCE;
