@@ -81,4 +81,15 @@ public class TalkingWithChatBot {
                 "I told you what i can only add two positive integers.", responce);
     }
 
+    @Test
+    public void AskThreeWrongRequests(){
+        ChatBot bot = new ChatBot();
+        bot.Ask("Some wrong request.");
+        bot.Ask("Second wrong request.");
+        bot.Ask("Third wrond request.");
+        String responce = bot.GetResponce();
+        assertEquals("I am tired of you. There will be no service until you apologize in a manner like:" +
+                " \"Please, forgove me, o great chat bot!\".", responce);
+    }
+
 }
