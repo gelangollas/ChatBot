@@ -108,4 +108,19 @@ public class TalkingWithChatBot {
         }
     }
 
+    @Test
+    public void AskThreeWrongRequestsAndApologize(){
+        ChatBot bot = new ChatBot();
+        bot.Ask("Some wrong request.");
+        bot.Ask("Second wrong request.");
+        bot.Ask("Third wrong request.");
+
+
+        bot.Ask("Please, forgive me, o great chat bot!");
+        String responce = bot.GetResponce();
+        assertEquals("okaaay... i'll forgive you that time " +
+                "but try not to cause troubles anymore.", responce);
+    }
+    
+
 }
