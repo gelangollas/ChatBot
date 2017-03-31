@@ -80,7 +80,8 @@ public class TalkingWithChatBot {
 
         bot.Ask("Second wrong request.");
         String responce = bot.GetResponce();
-        assertEquals("I told you what i can only add two positive integers.", responce);
+        assertEquals("Are you stupid? " +
+                "I told you what i can only add two positive integers.", responce);
     }
 
 }

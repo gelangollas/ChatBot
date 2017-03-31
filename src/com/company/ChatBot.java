@@ -25,10 +25,8 @@ public class ChatBot {
 
     String requestBuffer;
     boolean firstResponce = true;
+    boolean wasWrongRequest = false;
 
-    public ChatBot(){
-
-    }
 
     public void Ask(String request) {
         requestBuffer = request;
@@ -46,6 +44,10 @@ public class ChatBot {
         if(requestBuffer.equals(FAREWELL_REQUEST))
             return FAREWELL_RESPONCE;
 
+        if(wasWrongRequest)
+            return SECOND_WRONG_REQUEST_RESPONCE;
+
+        wasWrongRequest = true;
         return WRONG_REQUEST_RESPONCE;
     }
 
