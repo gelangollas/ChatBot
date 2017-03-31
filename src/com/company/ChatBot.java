@@ -30,7 +30,6 @@ public class ChatBot {
 
     static final String OFFENDED_RESPONCE = "...";
 
-
     String responce = INITIAL_RESPONCE;
     BotState state = BotState.NORMAL;
 
@@ -75,7 +74,7 @@ public class ChatBot {
             }
             case OFFENDED: {
                 if(request.equals(APOLOGIZE_REQUEST)){
-
+                    state = BotState.NORMAL;
                 }
                 else {
                     responce = OFFENDED_RESPONCE;
