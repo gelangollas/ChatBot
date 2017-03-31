@@ -28,6 +28,8 @@ public class ChatBot {
 
     static final String APOLOGIZE_REQUEST = "Please, forgive me, o great chat bot!";
 
+    static final String OFFENDED_RESPONCE = "...";
+
 
     String responce = INITIAL_RESPONCE;
     BotState state = BotState.NORMAL;
@@ -66,9 +68,19 @@ public class ChatBot {
                     state = BotState.NORMAL;
                 }
                 else {
+                    state = BotState.OFFENDED;
                     responce = THIRD_WRONG_REQUEST_RESPONCE;
                 }
                 break;
+            }
+            case OFFENDED: {
+                if(request.equals(APOLOGIZE_REQUEST)){
+
+                }
+                else {
+                    responce = OFFENDED_RESPONCE;
+                }
+
             }
             default: break;
         }
@@ -92,5 +104,5 @@ public class ChatBot {
 }
 
 enum BotState{
-    INITIAL, NORMAL, LITTLE_ANGRY, ANGRY;
+    NORMAL, LITTLE_ANGRY, ANGRY, OFFENDED;
 }

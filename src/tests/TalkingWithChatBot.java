@@ -3,6 +3,8 @@ import com.company.ChatBot;
 import org.junit.Test;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
@@ -90,6 +92,20 @@ public class TalkingWithChatBot {
         String responce = bot.GetResponce();
         assertEquals("I am tired of you. There will be no service until you apologize in a manner like:" +
                 " \"Please, forgive me, o great chat bot!\".", responce);
+    }
+
+    @Test
+    public void AskThreeWrongRequestsAndAddRequest(){
+        ChatBot bot = new ChatBot();
+        bot.Ask("Some wrong request.");
+        bot.Ask("Second wrong request.");
+        bot.Ask("Third wrong request.");
+
+        for(int i = 0; i < 100; i++){
+            bot.Ask("Next wrong request.");
+            String responce = bot.GetResponce();
+            assertEquals("...", responce);
+        }
     }
 
 }
